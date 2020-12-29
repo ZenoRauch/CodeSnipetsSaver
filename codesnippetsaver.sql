@@ -1,0 +1,22 @@
+CREATE DATABASE codesnippetsaver;
+
+USE codesnippetsaver;
+
+CREATE TABLE language(
+    id INT NOT NULL AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE topic(
+    id INT NOT NULL AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    languageid INT NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    FOREIGN KEY (languageid) REFERENCES language(id)
+);
+
+CREATE TABLE snippet(
+    id INT NOT NULL AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    topicid INT NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    FOREIGN KEY (topicid) REFERENCES topic(id)
+);
